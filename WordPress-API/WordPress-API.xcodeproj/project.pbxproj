@@ -14,6 +14,7 @@
 		8F0BB1BE1A8BB2C6003F3C8B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0BB1BD1A8BB2C6003F3C8B /* Images.xcassets */; };
 		8F0BB1C11A8BB2C6003F3C8B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F0BB1BF1A8BB2C6003F3C8B /* LaunchScreen.xib */; };
 		8F0BB1CD1A8BB2C6003F3C8B /* WordPress_APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BB1CC1A8BB2C6003F3C8B /* WordPress_APITests.swift */; };
+		8F0BB1D71A8BB599003F3C8B /* WordPressWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BB1D61A8BB599003F3C8B /* WordPressWebServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		8F0BB1C61A8BB2C6003F3C8B /* WordPress-APITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WordPress-APITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0BB1CB1A8BB2C6003F3C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F0BB1CC1A8BB2C6003F3C8B /* WordPress_APITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPress_APITests.swift; sourceTree = "<group>"; };
+		8F0BB1D61A8BB599003F3C8B /* WordPressWebServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPressWebServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				8F0BB1B41A8BB2C6003F3C8B /* AppDelegate.swift */,
 				8F0BB1B61A8BB2C6003F3C8B /* MasterViewController.swift */,
 				8F0BB1B81A8BB2C6003F3C8B /* DetailViewController.swift */,
+				8F0BB1D61A8BB599003F3C8B /* WordPressWebServices.swift */,
 				8F0BB1BA1A8BB2C6003F3C8B /* Main.storyboard */,
 				8F0BB1BD1A8BB2C6003F3C8B /* Images.xcassets */,
 				8F0BB1BF1A8BB2C6003F3C8B /* LaunchScreen.xib */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F0BB1D71A8BB599003F3C8B /* WordPressWebServices.swift in Sources */,
 				8F0BB1B91A8BB2C6003F3C8B /* DetailViewController.swift in Sources */,
 				8F0BB1B71A8BB2C6003F3C8B /* MasterViewController.swift in Sources */,
 				8F0BB1B51A8BB2C6003F3C8B /* AppDelegate.swift in Sources */,

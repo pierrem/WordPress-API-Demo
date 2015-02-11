@@ -22,9 +22,9 @@ class DetailViewController: UIViewController {
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail: AnyObject = self.detailItem {
+        if let detail = self.detailItem as? Dictionary<String, AnyObject> {
             if let label = self.detailDescriptionLabel {
-                label.text = detail.description
+                label.text = detail["name"] as? String
             }
         }
     }
@@ -35,10 +35,6 @@ class DetailViewController: UIViewController {
         self.configureView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
 
 }

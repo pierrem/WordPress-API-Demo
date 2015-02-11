@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F0BB1B51A8BB2C6003F3C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BB1B41A8BB2C6003F3C8B /* AppDelegate.swift */; };
+		8F0BB1B71A8BB2C6003F3C8B /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BB1B61A8BB2C6003F3C8B /* MasterViewController.swift */; };
+		8F0BB1B91A8BB2C6003F3C8B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BB1B81A8BB2C6003F3C8B /* DetailViewController.swift */; };
+		8F0BB1BC1A8BB2C6003F3C8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0BB1BA1A8BB2C6003F3C8B /* Main.storyboard */; };
+		8F0BB1BE1A8BB2C6003F3C8B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0BB1BD1A8BB2C6003F3C8B /* Images.xcassets */; };
+		8F0BB1C11A8BB2C6003F3C8B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F0BB1BF1A8BB2C6003F3C8B /* LaunchScreen.xib */; };
+		8F0BB1CD1A8BB2C6003F3C8B /* WordPress_APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BB1CC1A8BB2C6003F3C8B /* WordPress_APITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8F0BB1C71A8BB2C6003F3C8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F0BB1A71A8BB2C6003F3C8B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F0BB1AE1A8BB2C6003F3C8B;
+			remoteInfo = "WordPress-API";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8F0BB1AF1A8BB2C6003F3C8B /* WordPress-API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WordPress-API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F0BB1B31A8BB2C6003F3C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F0BB1B41A8BB2C6003F3C8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8F0BB1B61A8BB2C6003F3C8B /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		8F0BB1B81A8BB2C6003F3C8B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8F0BB1BB1A8BB2C6003F3C8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8F0BB1BD1A8BB2C6003F3C8B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8F0BB1C01A8BB2C6003F3C8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		8F0BB1C61A8BB2C6003F3C8B /* WordPress-APITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WordPress-APITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F0BB1CB1A8BB2C6003F3C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F0BB1CC1A8BB2C6003F3C8B /* WordPress_APITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPress_APITests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F0BB1AC1A8BB2C6003F3C8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F0BB1C31A8BB2C6003F3C8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F0BB1A61A8BB2C6003F3C8B = {
+			isa = PBXGroup;
+			children = (
+				8F0BB1B11A8BB2C6003F3C8B /* WordPress-API */,
+				8F0BB1C91A8BB2C6003F3C8B /* WordPress-APITests */,
+				8F0BB1B01A8BB2C6003F3C8B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8F0BB1B01A8BB2C6003F3C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F0BB1AF1A8BB2C6003F3C8B /* WordPress-API.app */,
+				8F0BB1C61A8BB2C6003F3C8B /* WordPress-APITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F0BB1B11A8BB2C6003F3C8B /* WordPress-API */ = {
+			isa = PBXGroup;
+			children = (
+				8F0BB1B41A8BB2C6003F3C8B /* AppDelegate.swift */,
+				8F0BB1B61A8BB2C6003F3C8B /* MasterViewController.swift */,
+				8F0BB1B81A8BB2C6003F3C8B /* DetailViewController.swift */,
+				8F0BB1BA1A8BB2C6003F3C8B /* Main.storyboard */,
+				8F0BB1BD1A8BB2C6003F3C8B /* Images.xcassets */,
+				8F0BB1BF1A8BB2C6003F3C8B /* LaunchScreen.xib */,
+				8F0BB1B21A8BB2C6003F3C8B /* Supporting Files */,
+			);
+			path = "WordPress-API";
+			sourceTree = "<group>";
+		};
+		8F0BB1B21A8BB2C6003F3C8B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F0BB1B31A8BB2C6003F3C8B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8F0BB1C91A8BB2C6003F3C8B /* WordPress-APITests */ = {
+			isa = PBXGroup;
+			children = (
+				8F0BB1CC1A8BB2C6003F3C8B /* WordPress_APITests.swift */,
+				8F0BB1CA1A8BB2C6003F3C8B /* Supporting Files */,
+			);
+			path = "WordPress-APITests";
+			sourceTree = "<group>";
+		};
+		8F0BB1CA1A8BB2C6003F3C8B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F0BB1CB1A8BB2C6003F3C8B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8F0BB1AE1A8BB2C6003F3C8B /* WordPress-API */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F0BB1D01A8BB2C6003F3C8B /* Build configuration list for PBXNativeTarget "WordPress-API" */;
+			buildPhases = (
+				8F0BB1AB1A8BB2C6003F3C8B /* Sources */,
+				8F0BB1AC1A8BB2C6003F3C8B /* Frameworks */,
+				8F0BB1AD1A8BB2C6003F3C8B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WordPress-API";
+			productName = "WordPress-API";
+			productReference = 8F0BB1AF1A8BB2C6003F3C8B /* WordPress-API.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8F0BB1C51A8BB2C6003F3C8B /* WordPress-APITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F0BB1D31A8BB2C6003F3C8B /* Build configuration list for PBXNativeTarget "WordPress-APITests" */;
+			buildPhases = (
+				8F0BB1C21A8BB2C6003F3C8B /* Sources */,
+				8F0BB1C31A8BB2C6003F3C8B /* Frameworks */,
+				8F0BB1C41A8BB2C6003F3C8B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F0BB1C81A8BB2C6003F3C8B /* PBXTargetDependency */,
+			);
+			name = "WordPress-APITests";
+			productName = "WordPress-APITests";
+			productReference = 8F0BB1C61A8BB2C6003F3C8B /* WordPress-APITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F0BB1A71A8BB2C6003F3C8B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Pierre Marty";
+				TargetAttributes = {
+					8F0BB1AE1A8BB2C6003F3C8B = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					8F0BB1C51A8BB2C6003F3C8B = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 8F0BB1AE1A8BB2C6003F3C8B;
+					};
+				};
+			};
+			buildConfigurationList = 8F0BB1AA1A8BB2C6003F3C8B /* Build configuration list for PBXProject "WordPress-API" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8F0BB1A61A8BB2C6003F3C8B;
+			productRefGroup = 8F0BB1B01A8BB2C6003F3C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F0BB1AE1A8BB2C6003F3C8B /* WordPress-API */,
+				8F0BB1C51A8BB2C6003F3C8B /* WordPress-APITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F0BB1AD1A8BB2C6003F3C8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F0BB1BC1A8BB2C6003F3C8B /* Main.storyboard in Resources */,
+				8F0BB1C11A8BB2C6003F3C8B /* LaunchScreen.xib in Resources */,
+				8F0BB1BE1A8BB2C6003F3C8B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F0BB1C41A8BB2C6003F3C8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F0BB1AB1A8BB2C6003F3C8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F0BB1B91A8BB2C6003F3C8B /* DetailViewController.swift in Sources */,
+				8F0BB1B71A8BB2C6003F3C8B /* MasterViewController.swift in Sources */,
+				8F0BB1B51A8BB2C6003F3C8B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F0BB1C21A8BB2C6003F3C8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F0BB1CD1A8BB2C6003F3C8B /* WordPress_APITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8F0BB1C81A8BB2C6003F3C8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F0BB1AE1A8BB2C6003F3C8B /* WordPress-API */;
+			targetProxy = 8F0BB1C71A8BB2C6003F3C8B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8F0BB1BA1A8BB2C6003F3C8B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F0BB1BB1A8BB2C6003F3C8B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8F0BB1BF1A8BB2C6003F3C8B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F0BB1C01A8BB2C6003F3C8B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8F0BB1CE1A8BB2C6003F3C8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8F0BB1CF1A8BB2C6003F3C8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8F0BB1D11A8BB2C6003F3C8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "WordPress-API/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8F0BB1D21A8BB2C6003F3C8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "WordPress-API/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8F0BB1D41A8BB2C6003F3C8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "WordPress-APITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordPress-API.app/WordPress-API";
+			};
+			name = Debug;
+		};
+		8F0BB1D51A8BB2C6003F3C8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "WordPress-APITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordPress-API.app/WordPress-API";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8F0BB1AA1A8BB2C6003F3C8B /* Build configuration list for PBXProject "WordPress-API" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F0BB1CE1A8BB2C6003F3C8B /* Debug */,
+				8F0BB1CF1A8BB2C6003F3C8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F0BB1D01A8BB2C6003F3C8B /* Build configuration list for PBXNativeTarget "WordPress-API" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F0BB1D11A8BB2C6003F3C8B /* Debug */,
+				8F0BB1D21A8BB2C6003F3C8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8F0BB1D31A8BB2C6003F3C8B /* Build configuration list for PBXNativeTarget "WordPress-APITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F0BB1D41A8BB2C6003F3C8B /* Debug */,
+				8F0BB1D51A8BB2C6003F3C8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8F0BB1A71A8BB2C6003F3C8B /* Project object */;
+}

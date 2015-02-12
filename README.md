@@ -7,4 +7,3 @@ WordPress REST API documentation: [https://developer.wordpress.com/docs/api/](ht
 
 © Pierre Marty 2015
 [http://www.alpeslog.com](http://)
-

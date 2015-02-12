@@ -4,7 +4,7 @@ WordPress site url is hard coded. You can change it in WordPressWebServices.swif
 
 This project requires Swift 1.2 (XCode 6.3)
 
-WordPress REST API documentation: [https://developer.wordpress.com/docs/api/](http://)
+WordPress REST API documentation: [https://developer.wordpress.com/docs/api](https://developer.wordpress.com/docs/api)
 
 © Pierre Marty 2015
-[http://www.alpeslog.com](http://)
+[http://www.alpeslog.com](http://www.alpeslog.com)

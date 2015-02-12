@@ -11,17 +11,16 @@
 
 import Foundation
 
-
 class WordPressWebServices {
     
-    private var baseURL:String? = nil;
+    private var baseURL:String? = "https://public-api.wordpress.com/rest/v1.1/sites/developer.wordpress.com";   // your site url here !
     
     convenience init(url: String) {
         self.init()
         self.baseURL = url
     }
     
-    // Returns an array of posts (a dictionary with ID, name, slug and post_count keys) tagged with a given category identifier
+    // Returns an array of categories (a dictionary with ID, name, slug and post_count keys)
     func categories (completionHandler:(Array<Dictionary<String, AnyObject>>!, NSError!) -> Void) {
         var requestURL = baseURL! + "/categories?fields=ID,name,slug,post_count"
         let url = NSURL(string: requestURL)!
@@ -80,5 +79,28 @@ class WordPressWebServices {
         dataTask.resume()
     }
     
+    
+    func postByIdentifier (identifier:Int, completionHandler:(Dictionary<String, AnyObject>!, NSError!) -> Void) {
+        var requestURL = baseURL! + "/posts/\(identifier)?fields=date,title,content"
+        let url = NSURL(string: requestURL)!
+        let urlSession = NSURLSession.sharedSession()
+        
+        let dataTask = urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+            if error != nil {
+                completionHandler(nil, error);
+            }
+            var jsonError: NSError?
+            var jsonResult:AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
+            completionHandler(jsonResult as? Dictionary<String, AnyObject>, jsonError);
+        })
+        
+        dataTask.resume()
+    }
+    
+    
 }
+
+
+
+
 

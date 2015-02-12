@@ -1,5 +1,5 @@
 # WordPress-API-Demo
-An iOS application written in Swift that demonstrates communication with WordPress
+An iOS application written using Swift that demonstrates the communication with WordPress. The code has been kept simple and minimalist. In particular, error conditions are not reported to the user !
 
 This project requires Swift 1.2 (XCode 6.3)
 

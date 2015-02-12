@@ -1,5 +1,5 @@
 //
-//  MasterViewController.swift
+//  PostListViewController.swift
 //  WordPress-API
 //
 //  Created by Pierre Marty on 11/02/2015.
@@ -7,15 +7,18 @@
 //
 
 //
-//  This controller is in charge of the list of categories
+//  This controller is in charge of the list post tagged with a category
 //
+
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class PostListViewController: UITableViewController {
     
+    var category = Dictionary<String, AnyObject>()
     let webService = WordPressWebServices()
-    var categories = [Dictionary<String, AnyObject>]()
+    var posts = [Dictionary<String, AnyObject>]()
+    var detailViewController: DetailViewController? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,35 +33,32 @@ class MasterViewController: UITableViewController {
         
         if let split = self.splitViewController {
             let controllers = split.viewControllers
+            self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
-        self.updateCategoryList()
+        self.updatePostList()
     }
     
-    func updateCategoryList() {
-        webService.categories({ (categories, error) -> Void in
-            if categories != nil {
-                self.categories = []
-                for category in categories {
-                    if let catPostCount = category["post_count"] as? Int where catPostCount > 0 {
-                        self.categories.append(category)
-                    }
-                }
-                
+    func updatePostList() {
+        webService.postsInCategory(category["slug"] as! String, completionHandler: { (posts, error) -> Void in
+            if posts != nil {
+                self.posts = posts
                 dispatch_async(dispatch_get_main_queue(), { // access to UI in the main thread
                     self.tableView.reloadData()
                 })
             }
         })
     }
-
+    
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showPosts" {
+        if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let category = categories[indexPath.row]
-                let postListViewController = segue.destinationViewController as! PostListViewController
-                postListViewController.category = category
+                let post = posts[indexPath.row]
+                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+                controller.detailItem = post
+                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }
@@ -70,16 +70,16 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        return posts.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
-        let category = categories[indexPath.row]
-        cell.textLabel!.text = category["name"] as? String
+        let cell = tableView.dequeueReusableCellWithIdentifier("Post", forIndexPath: indexPath) as! UITableViewCell
+        
+        let category = posts[indexPath.row]
+        cell.textLabel!.text = category["title"] as? String
         return cell
     }
     
-
+    
 }
-

@@ -75,11 +75,23 @@ class PostListViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Post", forIndexPath: indexPath) as! UITableViewCell
+        let post = posts[indexPath.row]
+        cell.textLabel!.text = post["title"] as? String
         
-        let category = posts[indexPath.row]
-        cell.textLabel!.text = category["title"] as? String
+        cell.imageView!.image = nil;
+        if let url = post["featured_image"] as? String {
+            if url != "" {
+                webService.loadImage (url, completionHandler: {(image, error) -> Void in
+                    dispatch_async(dispatch_get_main_queue(), {
+                        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                            cell.imageView!.image = image;
+                            cell.setNeedsLayout()
+                        }
+                    })
+                })
+            }
+        }
         return cell
     }
-    
     
 }

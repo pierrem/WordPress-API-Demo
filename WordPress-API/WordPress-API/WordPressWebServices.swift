@@ -10,10 +10,12 @@
 
 
 import Foundation
+import UIKit
 
 class WordPressWebServices {
     
     private var baseURL:String? = "https://public-api.wordpress.com/rest/v1.1/sites/developer.wordpress.com";   // your site url here !
+    //    private var baseURL:String? = "https://public-api.wordpress.com/rest/v1.1/sites/www.alpeslog.com";
     
     convenience init(url: String) {
         self.init()
@@ -54,7 +56,7 @@ class WordPressWebServices {
     
     // Returns an array of posts (a dictionary with ID and title keys) tagged with a given category identifier
     func postsInCategory (categoryIdentifier:String, completionHandler:(Array<Dictionary<String, AnyObject>>!, NSError!) -> Void) {
-        var requestURL = baseURL! + "/posts/?category=\(categoryIdentifier)&fields=ID,title"
+        var requestURL = baseURL! + "/posts/?category=\(categoryIdentifier)&fields=ID,title,featured_image"
         let url = NSURL(string: requestURL)!
         let urlSession = NSURLSession.sharedSession()
         
@@ -80,6 +82,7 @@ class WordPressWebServices {
     }
     
     
+    
     func postByIdentifier (identifier:Int, completionHandler:(Dictionary<String, AnyObject>!, NSError!) -> Void) {
         var requestURL = baseURL! + "/posts/\(identifier)?fields=date,title,content"
         let url = NSURL(string: requestURL)!
@@ -97,6 +100,20 @@ class WordPressWebServices {
         dataTask.resume()
     }
     
+    
+    func loadImage (url: String, completionHandler:(UIImage!, NSError!) -> Void) {
+        let url = NSURL(string: url)!
+        let urlSession = NSURLSession.sharedSession()
+        
+        let dataTask = urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+            if error == nil {
+                let image = UIImage(data:data);
+                completionHandler(image, error);
+            }
+        })
+        
+        dataTask.resume()
+    }
     
 }
 

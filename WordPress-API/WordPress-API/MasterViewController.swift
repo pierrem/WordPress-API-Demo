@@ -28,9 +28,9 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let split = self.splitViewController {
-            let controllers = split.viewControllers
-        }
+//        if let split = self.splitViewController {
+//            let controllers = split.viewControllers
+//        }
         self.updateCategoryList()
     }
     
@@ -55,7 +55,7 @@ class MasterViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showPosts" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
                 let category = categories[indexPath.row]
                 let postListViewController = segue.destinationViewController as! PostListViewController
                 postListViewController.category = category
@@ -74,7 +74,7 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         let category = categories[indexPath.row]
         cell.textLabel!.text = category["name"] as? String
         return cell

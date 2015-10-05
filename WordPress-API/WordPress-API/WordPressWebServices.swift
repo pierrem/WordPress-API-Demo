@@ -24,7 +24,7 @@ class WordPressWebServices {
     
     // Returns an array of categories (a dictionary with ID, name, slug and post_count keys)
     func categories (completionHandler:(Array<Dictionary<String, AnyObject>>!, NSError!) -> Void) {
-        var requestURL = baseURL! + "/categories?fields=ID,name,slug,post_count"
+        let requestURL = baseURL! + "/categories?fields=ID,name,slug,post_count"
         let url = NSURL(string: requestURL)!
         let urlSession = NSURLSession.sharedSession()
         
@@ -33,16 +33,24 @@ class WordPressWebServices {
                 completionHandler(nil, error);
             }
             var jsonError: NSError?
-            var jsonResult:AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
+            var jsonResult:AnyObject?
+            do {
+                jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+            } catch let error as NSError {
+                jsonError = error
+                jsonResult = nil
+            } catch {
+                fatalError()
+            }
             var categories:Array<Dictionary<String, AnyObject>> = []
             
             // Attention, version Swift 1.2 is required to compile next line !
             if let resultDictionary = jsonResult as? Dictionary<String, AnyObject>, returnedCategories = resultDictionary["categories"] as? [Dictionary<String, AnyObject>]{
                 for category in returnedCategories {
-                    if let catID = category["ID"] as? Int,
-                        catName = category["name"] as? String,
-                        catSlug = category["slug"] as? String,
-                        catPostCount = category["post_count"] as? Int
+                    if let _ = category["ID"] as? Int,
+                        _ = category["name"] as? String,
+                        _ = category["slug"] as? String,
+                        _ = category["post_count"] as? Int
                     {
                         categories.append(category)
                     }
@@ -56,7 +64,7 @@ class WordPressWebServices {
     
     // Returns an array of posts (a dictionary with ID and title keys) tagged with a given category identifier
     func postsInCategory (categoryIdentifier:String, completionHandler:(Array<Dictionary<String, AnyObject>>!, NSError!) -> Void) {
-        var requestURL = baseURL! + "/posts/?category=\(categoryIdentifier)&fields=ID,title,featured_image"
+        let requestURL = baseURL! + "/posts/?category=\(categoryIdentifier)&fields=ID,title,featured_image"
         let url = NSURL(string: requestURL)!
         let urlSession = NSURLSession.sharedSession()
         
@@ -65,12 +73,20 @@ class WordPressWebServices {
                 completionHandler(nil, error);
             }
             var jsonError: NSError?
-            var jsonResult:AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
+            var jsonResult:AnyObject?
+            do {
+                jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+            } catch let error as NSError {
+                jsonError = error
+                jsonResult = nil
+            } catch {
+                fatalError()
+            }
             var articles:Array<Dictionary<String, AnyObject>> = []
             
             if let resultDictionary = jsonResult as? Dictionary<String, AnyObject>, posts = resultDictionary["posts"] as? [Dictionary<String, AnyObject>]{
                 for post in posts {
-                    if let postID = post["ID"] as? Int, postTitle = post["title"] as? String  {
+                    if let _ = post["ID"] as? Int, _ = post["title"] as? String  {
                         articles.append(post)
                     }
                 }
@@ -84,7 +100,7 @@ class WordPressWebServices {
     
     
     func postByIdentifier (identifier:Int, completionHandler:(Dictionary<String, AnyObject>!, NSError!) -> Void) {
-        var requestURL = baseURL! + "/posts/\(identifier)?fields=date,title,content"
+        let requestURL = baseURL! + "/posts/\(identifier)?fields=date,title,content"
         let url = NSURL(string: requestURL)!
         let urlSession = NSURLSession.sharedSession()
         
@@ -93,7 +109,15 @@ class WordPressWebServices {
                 completionHandler(nil, error);
             }
             var jsonError: NSError?
-            var jsonResult:AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
+            var jsonResult:AnyObject?
+            do {
+                jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+            } catch let error as NSError {
+                jsonError = error
+                jsonResult = nil
+            } catch {
+                fatalError()
+            }
             completionHandler(jsonResult as? Dictionary<String, AnyObject>, jsonError);
         })
         
@@ -107,7 +131,7 @@ class WordPressWebServices {
         
         let dataTask = urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
             if error == nil {
-                let image = UIImage(data:data);
+                let image = UIImage(data:data!);
                 completionHandler(image, error);
             }
         })

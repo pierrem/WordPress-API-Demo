@@ -18,7 +18,7 @@ class PostListViewController: UITableViewController {
     var category = Dictionary<String, AnyObject>()
     let webService = WordPressWebServices()
     var posts = [Dictionary<String, AnyObject>]()
-    var detailViewController: DetailViewController? = nil
+    //var detailViewController: DetailViewController? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,10 +31,10 @@ class PostListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let split = self.splitViewController {
-            let controllers = split.viewControllers
-            self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
-        }
+//        if let split = self.splitViewController {
+//            let controllers = split.viewControllers
+//            //self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
+//        }
         self.updatePostList()
     }
     
@@ -53,7 +53,7 @@ class PostListViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
                 let post = posts[indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = post
@@ -74,7 +74,7 @@ class PostListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Post", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Post", forIndexPath: indexPath) 
         let post = posts[indexPath.row]
         cell.textLabel!.text = post["title"] as? String
         

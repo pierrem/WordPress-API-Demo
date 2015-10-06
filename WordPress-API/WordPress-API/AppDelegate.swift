@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Pierre Marty. All rights reserved.
 //
 
+// 6 sept 2015 Swift 2 compatibility
+
 import UIKit
 
 @UIApplicationMain

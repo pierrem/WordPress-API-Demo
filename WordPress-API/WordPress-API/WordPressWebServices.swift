@@ -15,7 +15,6 @@ import UIKit
 class WordPressWebServices {
     
     private var baseURL:String? = "https://public-api.wordpress.com/rest/v1.1/sites/developer.wordpress.com";   // your site url here !
-    //    private var baseURL:String? = "https://public-api.wordpress.com/rest/v1.1/sites/www.alpeslog.com";
     
     convenience init(url: String) {
         self.init()
@@ -44,17 +43,17 @@ class WordPressWebServices {
             }
             var categories:Array<Dictionary<String, AnyObject>> = []
             
-            // Attention, version Swift 1.2 is required to compile next line !
-            if let resultDictionary = jsonResult as? Dictionary<String, AnyObject>, returnedCategories = resultDictionary["categories"] as? [Dictionary<String, AnyObject>]{
-                for category in returnedCategories {
-                    if let _ = category["ID"] as? Int,
-                        _ = category["name"] as? String,
-                        _ = category["slug"] as? String,
-                        _ = category["post_count"] as? Int
-                    {
-                        categories.append(category)
+            if let resultDictionary = jsonResult as? Dictionary<String, AnyObject>,
+                returnedCategories = resultDictionary["categories"] as? [Dictionary<String, AnyObject>] {
+                    for category in returnedCategories {
+                        if let _ = category["ID"] as? Int,
+                            _ = category["name"] as? String,
+                            _ = category["slug"] as? String,
+                            _ = category["post_count"] as? Int
+                        {
+                            categories.append(category)
+                        }
                     }
-                }
             }
             completionHandler(categories, jsonError);
         })

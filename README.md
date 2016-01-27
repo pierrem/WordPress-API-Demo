@@ -3,6 +3,8 @@ An iOS application written using Swift that demonstrates the communication with 
 WordPress site url is hard coded. You can change it in WordPressWebServices.swift, baseURL.
 
 
+27 jan 2016 : NSAllowsArbitraryLoads to allow loading images in webView
+
 6 oct 2015 : XCode 7 & Swift 2.
 The code hasn't yet be reworked to use new Swift construction (guard for exemple) that will lead to cleaner code.
 

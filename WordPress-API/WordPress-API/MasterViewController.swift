@@ -14,8 +14,7 @@ import UIKit
 
 class MasterViewController: UITableViewController {
     
-    let webService = WordPressWebServices()
-    var categories = [Dictionary<String, AnyObject>]()
+    var categories = [Dictionary<String, AnyObject>]?()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,20 +26,16 @@ class MasterViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if let split = self.splitViewController {
-//            let controllers = split.viewControllers
-//        }
         self.updateCategoryList()
     }
     
     func updateCategoryList() {
-        webService.categories({ (categories, error) -> Void in
+        WordPressWebServices.sharedInstance.categories({ (categories, error) -> Void in
             if categories != nil {
                 self.categories = []
-                for category in categories {
+                for category in categories! {
                     if let catPostCount = category["post_count"] as? Int where catPostCount > 0 {
-                        self.categories.append(category)
+                        self.categories!.append(category)
                     }
                 }
                 
@@ -56,7 +51,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showPosts" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let category = categories[indexPath.row]
+                let category = categories![indexPath.row]
                 let postListViewController = segue.destinationViewController as! PostListViewController
                 postListViewController.category = category
             }
@@ -70,16 +65,21 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        if categories != nil {
+            return categories!.count
+        }
+        else {
+            return 0;
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
-        let category = categories[indexPath.row]
-        cell.textLabel!.text = category["name"] as? String
+        let category = categories![indexPath.row]
+        let categoryName = category["name"] as? String
+        cell.textLabel!.text = String(htmlEncodedString: categoryName!)
         return cell
     }
     
-
 }
 

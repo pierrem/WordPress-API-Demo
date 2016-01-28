@@ -1,6 +1,6 @@
 # WordPress-API-Demo
 An iOS application written using Swift that demonstrates the communication with WordPress. The code has been kept simple and minimalist. In particular, error conditions are not reported to the user !
-WordPress site url is hard coded. You can change it in WordPressWebServices.swift, baseURL.
+WordPress site url is hard coded. You can change it in WordPressWebServices.swift.
 
 
 27 jan 2016 : NSAllowsArbitraryLoads to allow loading images in webView

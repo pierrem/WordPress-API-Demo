@@ -7,7 +7,7 @@
 //
 
 //
-//  This controller is in charge of the list post tagged with a category
+//  This controller is in charge of the list of posts in a category
 //
 
 
@@ -16,9 +16,7 @@ import UIKit
 class PostListViewController: UITableViewController {
     
     var category = Dictionary<String, AnyObject>()
-    let webService = WordPressWebServices()
-    var posts = [Dictionary<String, AnyObject>]()
-    //var detailViewController: DetailViewController? = nil
+    var posts = [Dictionary<String, AnyObject>]?()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,16 +28,11 @@ class PostListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        if let split = self.splitViewController {
-//            let controllers = split.viewControllers
-//            //self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
-//        }
         self.updatePostList()
     }
     
     func updatePostList() {
-        webService.postsInCategory(category["slug"] as! String, completionHandler: { (posts, error) -> Void in
+        WordPressWebServices.sharedInstance.postsInCategory(category["slug"] as! String, completionHandler: { (posts, error) -> Void in
             if posts != nil {
                 self.posts = posts
                 dispatch_async(dispatch_get_main_queue(), { // access to UI in the main thread
@@ -54,7 +47,7 @@ class PostListViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let post = posts[indexPath.row]
+                let post = posts![indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = post
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
@@ -70,18 +63,24 @@ class PostListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        if posts != nil {
+            return posts!.count
+        }
+        else {
+            return 0;
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Post", forIndexPath: indexPath) 
-        let post = posts[indexPath.row]
-        cell.textLabel!.text = post["title"] as? String
+        let post = posts![indexPath.row]
+        let title = post["title"] as? String
+        cell.textLabel!.text = String(htmlEncodedString: title!)
         
         cell.imageView!.image = nil;
-        if let url = post["featured_image"] as? String {
+        if let url = post["featured_image"] as? String {    // there is a link to an image
             if url != "" {
-                webService.loadImage (url, completionHandler: {(image, error) -> Void in
+                WordPressWebServices.sharedInstance.loadImage (url, completionHandler: {(image, error) -> Void in
                     dispatch_async(dispatch_get_main_queue(), {
                         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
                             cell.imageView!.image = image;
@@ -95,3 +94,5 @@ class PostListViewController: UITableViewController {
     }
     
 }
+
+

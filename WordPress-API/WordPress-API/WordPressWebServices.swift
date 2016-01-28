@@ -16,9 +16,7 @@ class WordPressWebServices {
     
     // your site url here !
     
-    //    static let sharedInstance = WordPressWebServices(url:"https://public-api.wordpress.com/rest/v1.1/sites/developer.wordpress.com")
-    
-    static let sharedInstance = WordPressWebServices(url:"https://public-api.wordpress.com/rest/v1.1/sites/www.alpeslog.com")
+    static let sharedInstance = WordPressWebServices(url:"https://public-api.wordpress.com/rest/v1.1/sites/developer.wordpress.com")
     
     private var baseURL:String?;
     

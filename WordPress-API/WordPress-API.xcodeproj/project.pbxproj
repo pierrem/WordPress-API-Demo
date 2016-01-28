@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8F0BB1B51A8BB2C6003F3C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BB1B41A8BB2C6003F3C8B /* AppDelegate.swift */; };
-		8F0BB1B71A8BB2C6003F3C8B /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BB1B61A8BB2C6003F3C8B /* MasterViewController.swift */; };
 		8F0BB1B91A8BB2C6003F3C8B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0BB1B81A8BB2C6003F3C8B /* DetailViewController.swift */; };
 		8F0BB1BC1A8BB2C6003F3C8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F0BB1BA1A8BB2C6003F3C8B /* Main.storyboard */; };
 		8F0BB1BE1A8BB2C6003F3C8B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0BB1BD1A8BB2C6003F3C8B /* Images.xcassets */; };
@@ -33,7 +32,6 @@
 		8F0BB1AF1A8BB2C6003F3C8B /* WordPress-API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WordPress-API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0BB1B31A8BB2C6003F3C8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F0BB1B41A8BB2C6003F3C8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8F0BB1B61A8BB2C6003F3C8B /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		8F0BB1B81A8BB2C6003F3C8B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8F0BB1BB1A8BB2C6003F3C8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F0BB1BD1A8BB2C6003F3C8B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				8F0BB1B41A8BB2C6003F3C8B /* AppDelegate.swift */,
-				8F0BB1B61A8BB2C6003F3C8B /* MasterViewController.swift */,
 				8F0BB1D81A8C0355003F3C8B /* PostListViewController.swift */,
 				8F0BB1B81A8BB2C6003F3C8B /* DetailViewController.swift */,
 				8F0BB1D61A8BB599003F3C8B /* WordPressWebServices.swift */,
@@ -231,7 +228,6 @@
 				8F0BB1D71A8BB599003F3C8B /* WordPressWebServices.swift in Sources */,
 				8F0BB1D91A8C0355003F3C8B /* PostListViewController.swift in Sources */,
 				8F0BB1B91A8BB2C6003F3C8B /* DetailViewController.swift in Sources */,
-				8F0BB1B71A8BB2C6003F3C8B /* MasterViewController.swift in Sources */,
 				8F0BB1B51A8BB2C6003F3C8B /* AppDelegate.swift in Sources */,
 				8FDF60D91C5AB97B003FA96B /* String+html.swift in Sources */,
 			);

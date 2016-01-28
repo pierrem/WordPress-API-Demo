@@ -32,7 +32,7 @@ class PostListViewController: UITableViewController {
     }
     
     func updatePostList() {
-        WordPressWebServices.sharedInstance.postsInCategory(category["slug"] as! String, completionHandler: { (posts, error) -> Void in
+        WordPressWebServices.sharedInstance.postsForPage(1, number: 100, completionHandler: { (posts, error) -> Void in
             if posts != nil {
                 self.posts = posts
                 dispatch_async(dispatch_get_main_queue(), { // access to UI in the main thread
@@ -41,6 +41,7 @@ class PostListViewController: UITableViewController {
             }
         })
     }
+
     
     // MARK: - Segues
     

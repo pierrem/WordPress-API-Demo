@@ -38,6 +38,10 @@ class DetailViewController: UIViewController {
         if let contentString = self.postContent!["content"] as? String {
             webView.loadHTMLString(contentString, baseURL: nil)
         }
+        if let titleString = self.postContent!["title"] as? String {
+            self.navigationItem.title = titleString;
+        }
+        
     }
     
 }

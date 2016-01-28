@@ -15,20 +15,21 @@ import UIKit
 class WordPressWebServices {
     
     // your site url here !
-//    static let sharedInstance = WordPressWebServices(url:"https://public-api.wordpress.com/rest/v1.1/sites/developer.wordpress.com")
+    
+    //    static let sharedInstance = WordPressWebServices(url:"https://public-api.wordpress.com/rest/v1.1/sites/developer.wordpress.com")
+    
     static let sharedInstance = WordPressWebServices(url:"https://public-api.wordpress.com/rest/v1.1/sites/www.alpeslog.com")
-
+    
     private var baseURL:String?;
-
+    
     convenience init(url: String) {
         self.init()
         self.baseURL = url
     }
     
     
-    // Returns (asynchronously, in completionHandler) an array of categories (a dictionary with ID, name, slug and post_count keys)
-    func categories (completionHandler:(Array<Dictionary<String, AnyObject>>?, NSError?) -> Void) {
-        let requestURL = baseURL! + "/categories?fields=ID,name,slug,post_count"
+    func postByIdentifier (identifier:Int, completionHandler:(Dictionary<String, AnyObject>?, NSError?) -> Void) {
+        let requestURL = baseURL! + "/posts/\(identifier)?fields=date,title,content"
         let url = NSURL(string: requestURL)!
         let urlSession = NSURLSession.sharedSession()
         
@@ -47,28 +48,15 @@ class WordPressWebServices {
             } catch {
                 fatalError()
             }
-            var categories:Array<Dictionary<String, AnyObject>> = []
-            
-            if let resultDictionary = jsonResult as? Dictionary<String, AnyObject>,
-                returnedCategories = resultDictionary["categories"] as? [Dictionary<String, AnyObject>] {
-                    for category in returnedCategories {
-                        if let _ = category["ID"] as? Int,
-                            _ = category["name"] as? String,
-                            _ = category["slug"] as? String,
-                            _ = category["post_count"] as? Int {
-                                categories.append(category)
-                        }
-                    }
-            }
-            completionHandler(categories, jsonError);
+            completionHandler(jsonResult as? Dictionary<String, AnyObject>, jsonError);
         })
         
         dataTask.resume()
     }
     
-    // Returns an array of posts (a dictionary with ID and title keys) tagged with a given category identifier
-    func postsInCategory (categoryIdentifier:String, completionHandler:(Array<Dictionary<String, AnyObject>>?, NSError?) -> Void) {
-        let requestURL = baseURL! + "/posts/?category=\(categoryIdentifier)&fields=ID,title,featured_image"
+    
+    func postsForPage (page:Int, number:Int, completionHandler:(Array<Dictionary<String, AnyObject>>?, NSError?) -> Void) {
+        let requestURL = baseURL! + "/posts/?page=\(page)&number=\(number)&fields=ID,title,featured_image"
         let url = NSURL(string: requestURL)!
         let urlSession = NSURLSession.sharedSession()
         
@@ -99,33 +87,6 @@ class WordPressWebServices {
                     }
             }
             completionHandler(articles, jsonError);
-        })
-        
-        dataTask.resume()
-    }
-    
-    
-    func postByIdentifier (identifier:Int, completionHandler:(Dictionary<String, AnyObject>?, NSError?) -> Void) {
-        let requestURL = baseURL! + "/posts/\(identifier)?fields=date,title,content"
-        let url = NSURL(string: requestURL)!
-        let urlSession = NSURLSession.sharedSession()
-        
-        let dataTask = urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
-            if error != nil {
-                completionHandler(nil, error);
-                return;
-            }
-            var jsonError: NSError?
-            var jsonResult:AnyObject?
-            do {
-                jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
-            } catch let error as NSError {
-                jsonError = error
-                jsonResult = nil
-            } catch {
-                fatalError()
-            }
-            completionHandler(jsonResult as? Dictionary<String, AnyObject>, jsonError);
         })
         
         dataTask.resume()

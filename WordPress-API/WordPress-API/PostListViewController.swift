@@ -32,7 +32,7 @@ class PostListViewController: UITableViewController {
     }
     
     func updatePostList() {
-        WordPressWebServices.sharedInstance.postsForPage(1, number: 100, completionHandler: { (posts, error) -> Void in
+        WordPressWebServices.sharedInstance.posts(page:1, number: 100, completionHandler: { (posts, error) -> Void in
             if posts != nil {
                 self.posts = posts
                 dispatch_async(dispatch_get_main_queue(), { // access to UI in the main thread
@@ -56,6 +56,7 @@ class PostListViewController: UITableViewController {
             }
         }
     }
+    
     
     // MARK: - Table View
     
@@ -83,6 +84,8 @@ class PostListViewController: UITableViewController {
             if url != "" {
                 WordPressWebServices.sharedInstance.loadImage (url, completionHandler: {(image, error) -> Void in
                     dispatch_async(dispatch_get_main_queue(), {
+                        // We should check if we are displaying the image in the corresponding cell.
+                        // The tableWiew may have been reloaded since we request the image !
                         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
                             cell.imageView!.image = image;
                             cell.setNeedsLayout()

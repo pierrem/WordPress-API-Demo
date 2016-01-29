@@ -21,6 +21,13 @@ class DetailViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // add the displayModeButtonItem in the navigation bar of the detail view controller (visible on iPad in portrait mode)
+        self.navigationController!.topViewController!.navigationItem.leftBarButtonItem = splitViewController!.displayModeButtonItem()
+    }
+
+    
     func updatePost() {
         if let postDesc = self.detailItem as? Dictionary<String, AnyObject>, identifier = postDesc["ID"] as? Int {
             WordPressWebServices.sharedInstance.postByIdentifier(identifier, completionHandler: { (postContent, error) -> Void in

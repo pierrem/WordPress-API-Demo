@@ -15,8 +15,9 @@ import UIKit
 class WordPressWebServices {
     
     // your site url here !
+    static let siteURL = "https://public-api.wordpress.com/rest/v1.1/sites/developer.wordpress.com"
     
-    static let sharedInstance = WordPressWebServices(url:"https://public-api.wordpress.com/rest/v1.1/sites/developer.wordpress.com")
+    static let sharedInstance = WordPressWebServices(url:siteURL)   // singleton instanciation
     
     private var baseURL:String?;
     
@@ -52,8 +53,8 @@ class WordPressWebServices {
         dataTask.resume()
     }
     
-    
-    func postsForPage (page:Int, number:Int, completionHandler:(Array<Dictionary<String, AnyObject>>?, NSError?) -> Void) {
+    // page parameter is one based [1..[
+    func posts (page page:Int, number:Int, completionHandler:(Array<Dictionary<String, AnyObject>>?, NSError?) -> Void) {
         let requestURL = baseURL! + "/posts/?page=\(page)&number=\(number)&fields=ID,title,featured_image"
         let url = NSURL(string: requestURL)!
         let urlSession = NSURLSession.sharedSession()

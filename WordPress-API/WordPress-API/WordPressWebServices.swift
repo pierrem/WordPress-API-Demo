@@ -26,7 +26,6 @@ class WordPressWebServices {
         self.baseURL = url
     }
     
-    
     func postByIdentifier (identifier:Int, completionHandler:(Dictionary<String, AnyObject>?, NSError?) -> Void) {
         let requestURL = baseURL! + "/posts/\(identifier)?fields=date,title,content"
         let url = NSURL(string: requestURL)!
@@ -55,7 +54,7 @@ class WordPressWebServices {
     
     // page parameter is one based [1..[
     func posts (page page:Int, number:Int, completionHandler:(Array<Dictionary<String, AnyObject>>?, NSError?) -> Void) {
-        let requestURL = baseURL! + "/posts/?page=\(page)&number=\(number)&fields=ID,title,featured_image"
+        let requestURL = baseURL! + "/posts/?page=\(page)&number=\(number)&fields=ID,title,date,featured_image"
         let url = NSURL(string: requestURL)!
         let urlSession = NSURLSession.sharedSession()
         

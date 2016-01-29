@@ -74,26 +74,9 @@ class PostListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Post", forIndexPath: indexPath) 
+        let cell = tableView.dequeueReusableCellWithIdentifier("Post", forIndexPath: indexPath) as! PostTableViewCell
         let post = posts![indexPath.row]
-        let title = post["title"] as? String
-        cell.textLabel!.text = String(htmlEncodedString: title!)
-        
-        cell.imageView!.image = nil;
-        if let url = post["featured_image"] as? String {    // there is a link to an image
-            if url != "" {
-                WordPressWebServices.sharedInstance.loadImage (url, completionHandler: {(image, error) -> Void in
-                    dispatch_async(dispatch_get_main_queue(), {
-                        // We should check if we are displaying the image in the corresponding cell.
-                        // The tableWiew may have been reloaded since we request the image !
-                        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-                            cell.imageView!.image = image;
-                            cell.setNeedsLayout()
-                        }
-                    })
-                })
-            }
-        }
+        cell.configureWithPostDictionary(post);
         return cell
     }
     

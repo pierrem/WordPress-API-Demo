@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
             webView.loadHTMLString(contentString, baseURL: nil)
         }
         if let titleString = self.postContent!["title"] as? String {
-            self.navigationItem.title = titleString;
+            self.navigationItem.title = String(htmlEncodedString: titleString);
         }
         
     }

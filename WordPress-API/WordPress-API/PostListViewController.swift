@@ -7,7 +7,7 @@
 //
 
 //
-//  This controller is in charge of the list of posts in a category
+//  This controller is in charge of the list of posts
 //
 
 
@@ -32,10 +32,10 @@ class PostListViewController: UITableViewController {
     }
     
     func updatePostList() {
-        WordPressWebServices.sharedInstance.posts(page:1, number: 100, completionHandler: { (posts, error) -> Void in
+        WordPressWebServices.sharedInstance.lastPosts(page:1, number: 100, completionHandler: { (posts, error) -> Void in
             if posts != nil {
                 self.posts = posts
-                dispatch_async(dispatch_get_main_queue(), { // access to UI in the main thread
+                dispatch_async(dispatch_get_main_queue(), {     // access to UI in the main thread only !
                     self.tableView.reloadData()
                 })
             }
@@ -51,8 +51,6 @@ class PostListViewController: UITableViewController {
                 let post = posts![indexPath.row]
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = post
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }

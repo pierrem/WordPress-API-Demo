@@ -2,7 +2,9 @@
 A iOS application written in Swift, that demonstrates the communication with WordPress. The code has been kept simple and minimalist. In particular, error conditions are not reported to the user!
 WordPress site URL is hardcoded. You can change it in WordPress Web Services.swift.
 
-28 jan 2017 : Droped categories, code simplification and bug fixes.
+16 may 2016 : Fixed a problem with SplitView on iPhone.
+
+28 jan 2016 : Droped categories, code simplification and bug fixes.
 
 27 jan 2016 : NSAllowsArbitraryLoads to allow loading images in webView.
 

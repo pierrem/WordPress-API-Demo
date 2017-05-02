@@ -5,6 +5,8 @@ WordPress site URL is hardcoded. You can change it in WordPress Web Services.swi
 The Wordpress API is available for any WordPress.com site as well as any self-hosted (WordPress.org) site connected via Jetpack :
 https://developer.wordpress.com/docs/api/getting-started/
 
+May 2017 : This project is now outdated (originaly written in Swift 1) and doesn't build with XCode 8 and Swift 3. I intend to rewrite it from scratch using Swift 3 later.
+
 16 may 2016 : Fixed a problem with SplitView on iPhone.
 
 28 jan 2016 : Droped categories, code simplification and bug fixes.

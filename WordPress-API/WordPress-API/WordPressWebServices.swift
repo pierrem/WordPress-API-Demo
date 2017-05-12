@@ -19,27 +19,27 @@ class WordPressWebServices {
     
     static let sharedInstance = WordPressWebServices(url:siteURL)   // singleton instanciation
     
-    private var baseURL:String?;
+    fileprivate var baseURL:String?;
     
     convenience init(url: String) {
         self.init()
         self.baseURL = url
     }
     
-    func postByIdentifier (identifier:Int, completionHandler:(Dictionary<String, AnyObject>?, NSError?) -> Void) {
+    func postByIdentifier (_ identifier:Int, completionHandler:@escaping (Dictionary<String, AnyObject>?, NSError?) -> Void) {
         let requestURL = baseURL! + "/posts/\(identifier)?fields=date,title,content"
-        let url = NSURL(string: requestURL)!
-        let urlSession = NSURLSession.sharedSession()
+        let url = URL(string: requestURL)!
+        let urlSession = URLSession.shared
         
-        let dataTask = urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+        let dataTask = urlSession.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
             if error != nil {
-                completionHandler(nil, error);
+                completionHandler(nil, error as NSError?);
                 return;
             }
             var jsonError: NSError?
-            var jsonResult:AnyObject?
+            var jsonResult:Any?
             do {
-                jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                jsonResult = try JSONSerialization.jsonObject(with: data!, options: [])
             } catch let error as NSError {
                 jsonError = error
                 jsonResult = nil
@@ -53,20 +53,20 @@ class WordPressWebServices {
     }
     
     // page parameter is one based [1..[
-    func lastPosts (page page:Int, number:Int, completionHandler:(Array<Dictionary<String, AnyObject>>?, NSError?) -> Void) {
+    func lastPosts (page:Int, number:Int, completionHandler:@escaping (Array<Dictionary<String, AnyObject>>?, NSError?) -> Void) {
         let requestURL = baseURL! + "/posts/?page=\(page)&number=\(number)&fields=ID,title,date,featured_image"
-        let url = NSURL(string: requestURL)!
-        let urlSession = NSURLSession.sharedSession()
+        let url = URL(string: requestURL)!
+        let urlSession = URLSession.shared
         
-        let dataTask = urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+        let dataTask = urlSession.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
             if error != nil {
-                completionHandler(nil, error);
+                completionHandler(nil, error as NSError?);
                 return;
             }
             var jsonError: NSError?
-            var jsonResult:AnyObject?
+            var jsonResult:Any?
             do {
-                jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
+                jsonResult = try JSONSerialization.jsonObject(with: data!, options: [])
             } catch let error as NSError {
                 jsonError = error
                 jsonResult = nil
@@ -76,10 +76,10 @@ class WordPressWebServices {
             var articles:Array<Dictionary<String, AnyObject>> = []
             
             if let resultDictionary = jsonResult as? Dictionary<String, AnyObject>,
-                posts = resultDictionary["posts"] as? [Dictionary<String, AnyObject>] {
+                let posts = resultDictionary["posts"] as? [Dictionary<String, AnyObject>] {
                     for post in posts {
                         if let _ = post["ID"] as? Int,
-                            _ = post["title"] as? String  {
+                            let _ = post["title"] as? String  {
                                 articles.append(post)
                         }
                     }
@@ -91,17 +91,17 @@ class WordPressWebServices {
     }
     
     
-    func loadImage (url: String, completionHandler:(UIImage?, NSError?) -> Void) {
-        let url = NSURL(string: url)!
-        let urlSession = NSURLSession.sharedSession()
+    func loadImage (_ url: String, completionHandler:@escaping (UIImage?, NSError?) -> Void) {
+        let url = URL(string: url)!
+        let urlSession = URLSession.shared
         
-        let dataTask = urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+        let dataTask = urlSession.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
             if error == nil {
                 let image = UIImage(data:data!);
                 completionHandler(image, nil);
             }
             else {
-                completionHandler(nil, error);
+                completionHandler(nil, error as NSError?);
             }
         })
         

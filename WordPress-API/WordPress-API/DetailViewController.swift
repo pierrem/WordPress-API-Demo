@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     
     var postContent:Dictionary<String, AnyObject>? = [:]
     
-    var detailItem: AnyObject? {
+    var detailItem: Any? {
         didSet {
             self.updatePost()
         }
@@ -24,16 +24,16 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // add the displayModeButtonItem in the navigation bar of the detail view controller (visible on iPad in portrait mode)
-        self.navigationController!.topViewController!.navigationItem.leftBarButtonItem = splitViewController!.displayModeButtonItem()
+        self.navigationController!.topViewController!.navigationItem.leftBarButtonItem = splitViewController!.displayModeButtonItem
     }
 
     
     func updatePost() {
-        if let postDesc = self.detailItem as? Dictionary<String, AnyObject>, identifier = postDesc["ID"] as? Int {
+        if let postDesc = self.detailItem as? Dictionary<String, AnyObject>, let identifier = postDesc["ID"] as? Int {
             WordPressWebServices.sharedInstance.postByIdentifier(identifier, completionHandler: { (postContent, error) -> Void in
                 if postContent != nil {
                     self.postContent = postContent
-                    dispatch_async(dispatch_get_main_queue(), { // access to UI in the main thread
+                    DispatchQueue.main.async(execute: { // access to UI in the main thread
                         self.updateWebView()
                     })
                 }

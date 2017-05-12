@@ -17,7 +17,7 @@ class PostTableViewCell: UITableViewCell {
     var postIdentifier:Int = 0
     var imageRequestedForIdentifier:Int = 0
     
-    func configureWithPostDictionary (post:Dictionary<String, AnyObject>) {
+    func configureWithPostDictionary (_ post:Dictionary<String, AnyObject>) {
         
         let title = post["title"] as? String
         self.titleLabel!.text = String(htmlEncodedString: title!)
@@ -26,17 +26,17 @@ class PostTableViewCell: UITableViewCell {
         
         if let dateStringFull = post["date"] as? String {
             // date is in the format "2016-01-29T01:45:33+02:00",
-            let dateString = dateStringFull.substringToIndex(dateStringFull.startIndex.advancedBy(10))  // keep only the date part
+            let dateString = dateStringFull.substring(to: dateStringFull.characters.index(dateStringFull.startIndex, offsetBy: 10))  // keep only the date part
             
-            let parsingDateFormatter = NSDateFormatter()        // TODO: a static var
+            let parsingDateFormatter = DateFormatter()        // TODO: a static var
             parsingDateFormatter.dateFormat = "yyyy-MM-dd"
-            let date = parsingDateFormatter.dateFromString(dateString)
+            let date = parsingDateFormatter.date(from: dateString)
             
-            let printingDateFormatter = NSDateFormatter()       // TODO: a static var
-            printingDateFormatter.dateStyle = .LongStyle
-            printingDateFormatter.timeStyle = .NoStyle
+            let printingDateFormatter = DateFormatter()       // TODO: a static var
+            printingDateFormatter.dateStyle = .long
+            printingDateFormatter.timeStyle = .none
             
-            self.dateLabel!.text = printingDateFormatter.stringFromDate(date!)
+            self.dateLabel!.text = printingDateFormatter.string(from: date!)
         }
         
         self.featuredImageView!.image = nil;
@@ -48,7 +48,7 @@ class PostTableViewCell: UITableViewCell {
             if url != "" {
                 imageRequestedForIdentifier = postIdentifier
                 WordPressWebServices.sharedInstance.loadImage (url, completionHandler: {(image, error) -> Void in
-                    dispatch_async(dispatch_get_main_queue(), {
+                    DispatchQueue.main.async(execute: {
                         // test if the cell has been recycled since we request the image !
                        if self.postIdentifier == self.imageRequestedForIdentifier {
                             self.featuredImageView!.image = image;

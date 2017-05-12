@@ -11,21 +11,25 @@ import UIKit
 // http://stackoverflow.com/questions/25607247/how-do-i-decode-html-entities-in-swift
 
 extension String {
-    init(htmlEncodedString: String) {
-        let encodedData = htmlEncodedString.dataUsingEncoding(NSUTF8StringEncoding)!
-        let attributedOptions : [String: AnyObject] = [
+    init?(htmlEncodedString: String) {
+        let encodedData = htmlEncodedString.data(using: String.Encoding.utf8)!
+        let attributedOptions : [String: Any] = [
             NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-            NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding
+            NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue
         ]
         
         var attributedString:NSAttributedString?
         
-        do{
+        do {
             attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
-        }catch{
+
+            // public init(data: Data, options: [String : Any] = [:], documentAttributes dict: AutoreleasingUnsafeMutablePointer<NSDictionary?>?) throws
+            // attributedString = try NSAttributedString(data: encodedData, options: [:], documentAttributes: nil)
+        } catch {
             print(error)
         }
         
         self.init(attributedString!.string)
     }
 }
+ 

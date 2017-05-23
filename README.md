@@ -1,11 +1,20 @@
 # WordPress-API-Demo
+
+This project was originaly written in Swift 1, for WordPress API version 1.
+It is now outdated. I'm rewritting it from scratch in  Swift 3 for WordPress REST API version 2.
+
+The new project:
+[https://github.com/pierrem/WP]()
+
+
 A iOS application written in Swift, that demonstrates the communication with WordPress. The code has been kept simple and minimalist. In particular, error conditions are not reported to the user!
 WordPress site URL is hardcoded. You can change it in WordPress Web Services.swift.
 
 The Wordpress API is available for any WordPress.com site as well as any self-hosted (WordPress.org) site connected via Jetpack :
 https://developer.wordpress.com/docs/api/getting-started/
 
-May 2017 : This project is now outdated (originaly written in Swift 1). I have just fixed compilation error with XCode 8 / swift 3. I intend to rewrite it from scratch using Swift 3 later.
+May 2017 : This project is now outdated (originaly written in Swift 1). I have just fixed compilation error with XCode 8 / swift 3. I intend to rewrite it from scratch using Swift 3.
+
 
 16 may 2016 : Fixed a problem with SplitView on iPhone.
 

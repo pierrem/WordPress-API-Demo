@@ -4,7 +4,7 @@ This project was originaly written in Swift 1, for WordPress API version 1.
 It is now outdated. I'm rewritting it from scratch in  Swift 3 for WordPress REST API version 2.
 
 The new project:
-[https://github.com/pierrem/WP]()
+[https://github.com/pierrem/WP](https://github.com/pierrem/WP)
 
 
 A iOS application written in Swift, that demonstrates the communication with WordPress. The code has been kept simple and minimalist. In particular, error conditions are not reported to the user!
